@@ -1,16 +1,23 @@
+#!/usr/bin/ruby
+
 require 'openssl'
 require 'base64'
 require 'zlib'
 
 class ODFDecrpter
 	def initialize content_file
-		@encrypted = content_file
+		file = File.open(content_file,'rb') #Content xml from odf
+		@encrypted_text = ''
+		file.readlines.each do |line|
+			@encrypted_text += line
+		end
+		@encrypted_text = content_file
 	end
-	
+
 	def parse manifest_file
 =begin
 		#Set all the neccessary variables for this ODF
-		@encrypted #content.xml
+		@encrypted_text #content.xml
 		
 		@hashing_algorithm
 		
@@ -22,18 +29,24 @@ class ODFDecrpter
 =end
 	end
 	
-	# Dictionary a textfile of words separated by new line
+	# Dictionary :path to textfile of words separated by new line
 	def dictionary_attack dictionary
-		
+		file = File.open(dictionary, "rb")
+		file.readlines.each do |line|
+			if(check_password? line)
+				return line
+			end
+		end
+		return false
 	end
 	
-	private:
-	def test_password? password
+	def check_password? password
 		hash = OpenSSL::Digest.digest(@hashing_algorithm, password)
 		key = OpenSSL::PKCS5.pbkdf2_hmac_sha1(hash, @salt, @iteration_count, 16)
 		deflated_plain_text = decrypt key
 		if(inflate_plain_text(deflated_plain_text))
 			return true
+			#Use the checksum after it inflates
 		else
 			return false
 		end
@@ -44,7 +57,7 @@ class ODFDecrpter
 		decipher.decrypt
 		decipher.key = key
 		decipher.iv = @initialization_vector
-		plain = decipher.update(@encrypted) + decipher.final
+		plain = decipher.update(@encrypted_text) + decipher.final
 		return plain # I know this is uneccessary it's just cleaner
 	end
 	
@@ -59,4 +72,9 @@ class ODFDecrpter
 			return false
 		end
 	end
+	
+	
+	#So global variables neccessary for decryption can be set by hand
+	attr_accessor:encrypted_text, :hashing_algorithm, :salt, :iteration_count, :initialization_vector, :decryption_algorithm
+	private :decrypt, :inflate_plain_text
 end
