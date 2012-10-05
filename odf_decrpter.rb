@@ -5,13 +5,12 @@ require 'base64'
 require 'zlib'
 
 class ODFDecrpter
-	def initialize content_file
-		file = File.open(content_file,'rb') #Content xml from odf
-		@encrypted_text = ''
-		file.readlines.each do |line|
-			@encrypted_text += line
-		end
-		@encrypted_text = content_file
+	def initialize #content_file
+# 		file = File.open(content_file,'rb') #Content xml from odf
+# 		@encrypted_text = ''
+# 		file.readlines.each do |line|
+# 			@encrypted_text += line
+# 		end
 	end
 
 	def parse manifest_file
