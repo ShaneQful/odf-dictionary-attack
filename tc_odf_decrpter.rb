@@ -5,8 +5,7 @@ class TC_ODFDecrpter < Test::Unit::TestCase
 	def setup
 		@test_odf_decrypter = ODFDecrpter.new
 		# Setup Encrypted test
-		puts Dir.pwd
-		file = File.open('doc/content.xml','rb') #Content xml from odf
+		file = File.open#('doc/content.xml','rb') #Content xml from odf
 		encrypted_text = ''
 		file.readlines.each do |line|
 			encrypted_text += line
