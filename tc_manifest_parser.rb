@@ -4,7 +4,7 @@ require 'manifest_parser.rb'
 
 class TC_ManifestParser < Test::Unit::TestCase
 	def setup
-		@blowfish_parser = ManifestParser.new 'TestFiles/doc/META-INF/manifest.xml'
+		@blowfish_parser = ManifestParser.new 'TestFiles/blowfish_unzipped/META-INF/manifest.xml'
 	end
 	def test_initialize
 		assert(@blowfish_parser.decrypter_hash, 'Decrypter Hash not initialized')   
