@@ -21,7 +21,7 @@ class ODFDecrpter
 	def dictionary_attack dictionary
 		file = File.open(dictionary, "rb")
 		file.readlines.each do |line|
-			if(check_password? line)
+			if(check_password? line.chomp)
 				return line
 			end
 		end
@@ -79,10 +79,11 @@ class ODFDecrpter
 	#, :hashing_algorithm, :size, :salt, :iteration_count, :initialization_vector,:checksum, :decryption_algorithm
 end
 
+=begin
 if __FILE__ == $0
 # 	# Setup Encrypted test
 # 	puts Dir.pwd
-		file = File.open(ARGV[1],'rb') #Content xml from odf
+		file = File.open(ARGV[2],'rb') #Content xml from odf
 		encrypted_text = ''
 		file.readlines.each do |line|
 			encrypted_text += line
@@ -103,8 +104,9 @@ if __FILE__ == $0
 	decrypter = ODFDecrpter.new parser.decrypter_hash
 	decrypter.encrypted_text = encrypted_text
 	startTime = Time.new
-	decrypter.check_password? 'test'
-# 	puts decrypter.dictionary_attack ARGV[1] #Word List arg 1
+# 	decrypter.check_password? 'test'
+	puts decrypter.dictionary_attack ARGV[1] #Word List arg 1
 	endTime = Time.new
 	puts endTime - startTime
 end
+=end

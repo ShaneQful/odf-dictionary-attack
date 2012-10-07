@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>odf_decrpter.rb</title>
+    <title>odf_decrypter.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Ruby C0 Coverage Information - RCov</h1>
-    <h2>odf_decrpter.rb</h2>
+    <h2>odf_decrypter.rb</h2>
 
     
 
@@ -27,18 +27,18 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="odf_decrpter_rb.html">odf_decrpter.rb</a></td>
-            <td class='right_align'><tt>110</tt></td>
-            <td class='right_align'><tt>74</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>21.82%</tt></div>
+            <td class="left_align"><a href="odf_decrypter_rb.html">odf_decrypter.rb</a></td>
+            <td class='right_align'><tt>112</tt></td>
+            <td class='right_align'><tt>59</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>92.86%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:22px"></div>
-            <div class="uncovered" style="width:78px"></div>
+            <div class="covered" style="width:93px"></div>
+            <div class="uncovered" style="width:7px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>17.57%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>86.44%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:18px"></div>
-            <div class="uncovered" style="width:82px"></div>
+            <div class="covered" style="width:86px"></div>
+            <div class="uncovered" style="width:14px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -110,55 +110,55 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line10">10</a> 		@hashing_algorithm = decrypter_hash['hashing_algorithm']</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line11">11</a> 		@salt = decrypter_hash['salt']</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line12">12</a> 		@iteration_count = decrypter_hash['iteration_count']</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line13">13</a> 		@initialization_vector = decrypter_hash['initialization_vector']</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line14">14</a> 		@decryption_algorithm = decrypter_hash['decryption_algorithm']		</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line15">15</a> 		@size = decrypter_hash['size']		</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line16">16</a> 		@checksum = decrypter_hash['checksum']</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line17">17</a> 		@key_size = decrypter_hash['key-size']</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line18">18</a> 	end</pre></td>
           </tr>
         
@@ -242,115 +242,115 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line32">32</a> 		hash = OpenSSL::Digest.digest(@hashing_algorithm, password)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line33">33</a> 		key = OpenSSL::PKCS5.pbkdf2_hmac_sha1(hash, @salt, @iteration_count, @key_size)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line34">34</a> 		deflated_plain_text = decrypt key</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line35">35</a> 		if(inflate_plain_text(deflated_plain_text))</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line36">36</a> 			text = inflate_plain_text(deflated_plain_text)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line37">37</a> 			if(text.size == @size)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line38">38</a> # 				return true</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line39">39</a> 				#do a checksum to make sure</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line40">40</a> # 				sha256 = Digest::SHA1.new</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line41">41</a> # 				digest = sha256.digest text[0 .. 1024]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line42">42</a> # 				puts text[0 .. 1024]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line43">43</a> # 				puts Base64.encode64 digest</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line44">44</a> 				return true</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line45">45</a> 			end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line46">46</a> 			#Use the checksum after it inflates</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line47">47</a> 		else</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line48">48</a> 			return false</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line49">49</a> 		end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line50">50</a> 	end</pre></td>
           </tr>
         
@@ -392,43 +392,43 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line57">57</a> 		decipher = OpenSSL::Cipher.new(@decryption_algorithm)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line58">58</a> 		decipher.decrypt</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line59">59</a> 		decipher.key = key</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line60">60</a> 		decipher.iv = @initialization_vector</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line61">61</a> 		plain = decipher.update(@encrypted_text) + decipher.final</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line62">62</a> 		return plain # I know this is uneccessary it's just cleaner</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line63">63</a> 	end</pre></td>
           </tr>
         
@@ -446,91 +446,91 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line66">66</a> 		begin</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line67">67</a> 			zstream = Zlib::Inflate.new(-Zlib::MAX_WBITS)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line68">68</a> 			buf = zstream.inflate(deflated_plain_text)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line69">69</a> 			zstream.finish</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line70">70</a> 			zstream.close</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line71">71</a> 			return buf</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line72">72</a> 		rescue</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line73">73</a> 			return false</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line74">74</a> 		end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line75">75</a> 	end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line76">76</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line77">77</a> 	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line78">78</a> 	#So global variables neccessary for decryption can be set by hand</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line79">79</a> 	#, :hashing_algorithm, :size, :salt, :iteration_count, :initialization_vector,:checksum, :decryption_algorithm</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line80">80</a> end</pre></td>
           </tr>
         
@@ -542,182 +542,194 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line82">82</a> if __FILE__ == $0</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line82">82</a> =begin</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line83">83</a> # 	# Setup Encrypted test</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line83">83</a> if __FILE__ == $0</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line84">84</a> # 	puts Dir.pwd</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line84">84</a> # 	# Setup Encrypted test</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line85">85</a> 		file = File.open(ARGV[2],'rb') #Content xml from odf</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line85">85</a> # 	puts Dir.pwd</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line86">86</a> 		encrypted_text = ''</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line86">86</a> 		file = File.open(ARGV[2],'rb') #Content xml from odf</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line87">87</a> 		file.readlines.each do |line|</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line87">87</a> 		encrypted_text = ''</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line88">88</a> 			encrypted_text += line</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line88">88</a> 		file.readlines.each do |line|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line89">89</a> 		end</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line89">89</a> 			encrypted_text += line</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line90">90</a> # 	decrypter.encrypted_text = encrypted_text</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line90">90</a> 		end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line91">91</a> # 	#Setup initvectors and salts</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line91">91</a> # 	decrypter.encrypted_text = encrypted_text</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line92">92</a> # 	decrypter.initialization_vector = Base64.decode64(&quot;cVee3d2dh1M=&quot;)</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a> # 	#Setup initvectors and salts</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line93">93</a> # 	decrypter.salt = Base64.decode64(&quot;lykzl3lw8LtNOx8WEL9gmQ==&quot;)</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line93">93</a> # 	decrypter.initialization_vector = Base64.decode64(&quot;cVee3d2dh1M=&quot;)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line94">94</a> # 	decrypter.hashing_algorithm = 'SHA1'</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line94">94</a> # 	decrypter.salt = Base64.decode64(&quot;lykzl3lw8LtNOx8WEL9gmQ==&quot;)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line95">95</a> # 	decrypter.iteration_count = 1024</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line95">95</a> # 	decrypter.hashing_algorithm = 'SHA1'</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line96">96</a> # 	decrypter.size = 31879840</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line96">96</a> # 	decrypter.iteration_count = 1024</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line97">97</a> # 	decrypter.decryption_algorithm = 'BF-CFB'</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line97">97</a> # 	decrypter.size = 31879840</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line98">98</a> # 	decrypter.checksum = Base64.decode64('t2OrLDkrl/RUnmfRQpXimcWWH8o=')</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line98">98</a> # 	decrypter.decryption_algorithm = 'BF-CFB'</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line99">99</a> # 	#puts Base64.decode64('t2OrLDkrl/RUnmfRQpXimcWWH8o=')</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line99">99</a> # 	decrypter.checksum = Base64.decode64('t2OrLDkrl/RUnmfRQpXimcWWH8o=')</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line100">100</a> # 	#Really have to write that parser	</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line100">100</a> # 	#puts Base64.decode64('t2OrLDkrl/RUnmfRQpXimcWWH8o=')</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line101">101</a> 	parser = ManifestParser.new ARGV[0]</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line101">101</a> # 	#Really have to write that parser	</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line102">102</a> 	puts parser.parse.inspect</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line102">102</a> 	parser = ManifestParser.new ARGV[0]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line103">103</a> 	decrypter = ODFDecrpter.new parser.decrypter_hash</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line103">103</a> 	puts parser.parse.inspect</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line104">104</a> 	decrypter.encrypted_text = encrypted_text</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line104">104</a> 	decrypter = ODFDecrpter.new parser.decrypter_hash</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line105">105</a> 	startTime = Time.new</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line105">105</a> 	decrypter.encrypted_text = encrypted_text</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line106">106</a> # 	decrypter.check_password? 'test'</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line106">106</a> 	startTime = Time.new</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line107">107</a> 	puts decrypter.dictionary_attack ARGV[1] #Word List arg 1</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line107">107</a> # 	decrypter.check_password? 'test'</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line108">108</a> 	endTime = Time.new</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line108">108</a> 	puts decrypter.dictionary_attack ARGV[1] #Word List arg 1</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line109">109</a> 	puts endTime - startTime</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line109">109</a> 	endTime = Time.new</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line110">110</a> end</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line110">110</a> 	puts endTime - startTime</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line111">111</a> end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line112">112</a> =end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Oct 07 18:22:39 +0100 2012 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
+    <p>Generated on Sun Oct 07 18:57:13 +0100 2012 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
 
   </body>
 </html>
