@@ -20,7 +20,8 @@ class ManifestParser
 		end
 		#Turn them all into the right format for ruby to understand
 		set_ruby_name_for_encryption
-		set_ruby_name_for_hashing_algorithm
+		@decrypter_hash['hashing_algorithm'] = set_ruby_name_for_hashing_algorithm(@decrypter_hash['hashing_algorithm'])		
+		@decrypter_hash['checksum-type'] = set_ruby_name_for_hashing_algorithm(@decrypter_hash['checksum-type'])
 		if(@decrypter_hash['key-size'] == nil)#Saw a encrypted blowfish odt online with out key size
 			@decrypter_hash['key-size'] = 16
 		end
@@ -29,12 +30,13 @@ class ManifestParser
 	
 	attr_reader :decrypter_hash
 	private	
-	def set_ruby_name_for_hashing_algorithm
-		if(@decrypter_hash['hashing_algorithm'].include?('SHA1') || @decrypter_hash['hashing_algorithm'].include?('sha1'))
-			@decrypter_hash['hashing_algorithm'] = 'SHA1'
-		elsif(@decrypter_hash['hashing_algorithm'].include?('SHA256') || @decrypter_hash['hashing_algorithm'].include?('sha256'))
-			@decrypter_hash['hashing_algorithm'] = 'SHA256'
+	def set_ruby_name_for_hashing_algorithm string_including_a_hash
+		if(string_including_a_hash.include?('SHA1') || string_including_a_hash.include?('sha1'))
+			string_including_a_hash = 'SHA1'
+		elsif(string_including_a_hash.include?('SHA256') || string_including_a_hash.include?('sha256'))
+			string_including_a_hash = 'SHA256'
 		end
+		return string_including_a_hash
 	end
 	
 	def set_ruby_name_for_encryption

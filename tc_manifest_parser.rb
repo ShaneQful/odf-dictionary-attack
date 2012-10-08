@@ -15,5 +15,6 @@ class TC_ManifestParser < Test::Unit::TestCase
 		assert(@blowfish_parser.decrypter_hash['decryption_algorithm'] == 'BF-CFB','Blowfish-Test-File: Wrong Cipher')
 		assert(@blowfish_parser.decrypter_hash['salt'] == Base64.decode64('lykzl3lw8LtNOx8WEL9gmQ=='),'Blowfish-Test-File: Wrong Salt')
 		assert(@blowfish_parser.decrypter_hash['key-derivation-name'] == 'PBKDF2','Blowfish-Test-File : Wrong key derivation algorithm')
+		assert(@blowfish_parser.decrypter_hash['checksum-type'] == 'SHA1','Blowfish-Test-File : Wrong checksum algorithm')
 	end
 end

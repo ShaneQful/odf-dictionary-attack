@@ -14,6 +14,7 @@ class ODFDecrpter
 		@decryption_algorithm = decrypter_hash['decryption_algorithm']		
 		@size = decrypter_hash['size']		
 		@checksum = decrypter_hash['checksum']
+		@checksum_algorithm = decrypter_hash['checksum-type']
 		@key_size = decrypter_hash['key-size']
 	end
 	
@@ -32,18 +33,9 @@ class ODFDecrpter
 		hash = OpenSSL::Digest.digest(@hashing_algorithm, password)
 		key = OpenSSL::PKCS5.pbkdf2_hmac_sha1(hash, @salt, @iteration_count, @key_size)
 		deflated_plain_text = decrypt key
-		if(inflate_plain_text(deflated_plain_text))
-			text = inflate_plain_text(deflated_plain_text)
-			if(text.size == @size)
-# 				return true
-				#do a checksum to make sure
-# 				sha256 = Digest::SHA1.new
-# 				digest = sha256.digest text[0 .. 1024]
-# 				puts text[0 .. 1024]
-# 				puts Base64.encode64 digest
-				return true
-			end
-			#Use the checksum after it inflates
+		checksum  = OpenSSL::Digest.digest(@checksum_algorithm, deflated_plain_text[0 .. 1024])
+		if(checksum == @checksum)
+			return true
 		else
 			return false
 		end
