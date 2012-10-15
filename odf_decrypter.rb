@@ -21,7 +21,8 @@ class ODFDecrpter
 	# Dictionary :path to textfile of words separated by new line
 	def dictionary_attack dictionary
 		file = File.open(dictionary, "rb")
-		file.readlines.each do |line|
+		wordlist = file.readlines
+		wordlist.each do |line|
 			if(check_password? line.chomp)
 				return line
 			end
@@ -35,13 +36,14 @@ class ODFDecrpter
 		deflated_plain_text = decrypt key
 		checksum  = OpenSSL::Digest.digest(@checksum_algorithm, deflated_plain_text[0 .. 1024])
 		if(checksum == @checksum)
+			@plain_text = inflate_plain_text(deflated_plain_text)
 			return true
 		else
 			return false
 		end
 	end
 	
-	attr_accessor:encrypted_text
+	attr_accessor:encrypted_text, :plain_text
 	
 	private
 	
@@ -65,10 +67,6 @@ class ODFDecrpter
 			return false
 		end
 	end
-	
-	
-	#So global variables neccessary for decryption can be set by hand
-	#, :hashing_algorithm, :size, :salt, :iteration_count, :initialization_vector,:checksum, :decryption_algorithm
 end
 
 =begin
@@ -80,17 +78,6 @@ if __FILE__ == $0
 		file.readlines.each do |line|
 			encrypted_text += line
 		end
-# 	decrypter.encrypted_text = encrypted_text
-# 	#Setup initvectors and salts
-# 	decrypter.initialization_vector = Base64.decode64("cVee3d2dh1M=")
-# 	decrypter.salt = Base64.decode64("lykzl3lw8LtNOx8WEL9gmQ==")
-# 	decrypter.hashing_algorithm = 'SHA1'
-# 	decrypter.iteration_count = 1024
-# 	decrypter.size = 31879840
-# 	decrypter.decryption_algorithm = 'BF-CFB'
-# 	decrypter.checksum = Base64.decode64('t2OrLDkrl/RUnmfRQpXimcWWH8o=')
-# 	#puts Base64.decode64('t2OrLDkrl/RUnmfRQpXimcWWH8o=')
-# 	#Really have to write that parser	
 	parser = ManifestParser.new ARGV[0]
 	puts parser.parse.inspect
 	decrypter = ODFDecrpter.new parser.decrypter_hash
