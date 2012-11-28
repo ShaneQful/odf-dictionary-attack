@@ -11,7 +11,7 @@ Usage:
 
 ```bash
 unzip file.odf
-ruby odf_decrypter.rb file_unzipped/META-INF/manifest.xml dictionary_file TestFiles/blowfish_unzipped/content.xml 
+ruby odf_decrypter.rb file_unzipped/META-INF/manifest.xml dictionary_file file_unzipped/content.xml 
 ```
 
 * DecryptDoc.sh and .rb are quick scripts using wvWare to attack MSOffice files but are of no real use due to how them compare against other cracking software.
