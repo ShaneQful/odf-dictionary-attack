@@ -1,7 +1,7 @@
 ### odf-dictionary-attack
 
 This is some code written as part of my final year project to run dictionary attacks against encrypted
-ODF file.
+ODF files.
 
 * The code will be MIT licensed. When I have time to sort that stuff out.
 
