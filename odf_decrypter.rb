@@ -1,5 +1,10 @@
 #!/usr/bin/ruby
 
+# Copyright (c) 2012 Shane Quigley
+# 
+# This software is MIT licensed see link for details
+# http://www.opensource.org/licenses/MIT
+
 require 'openssl'
 require 'base64'
 require 'zlib'
@@ -69,23 +74,24 @@ class ODFDecrpter
 	end
 end
 
-=begin
+# =begin
 if __FILE__ == $0
 # 	# Setup Encrypted test
 # 	puts Dir.pwd
-		file = File.open(ARGV[2],'rb') #Content xml from odf
-		encrypted_text = ''
-		file.readlines.each do |line|
-			encrypted_text += line
-		end
+	file = File.open(ARGV[2],'rb') #Content xml from odf
+	encrypted_text = ''
+	file.readlines.each do |line|
+		encrypted_text += line
+	end
 	parser = ManifestParser.new ARGV[0]
 	puts parser.parse.inspect
 	decrypter = ODFDecrpter.new parser.decrypter_hash
 	decrypter.encrypted_text = encrypted_text
+	
 	startTime = Time.new
 # 	decrypter.check_password? 'test'
 	puts decrypter.dictionary_attack ARGV[1] #Word List arg 1
 	endTime = Time.new
 	puts endTime - startTime
 end
-=end
+# =end

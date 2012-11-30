@@ -1,3 +1,10 @@
+#!/usr/bin/ruby
+
+# Copyright (c) 2012 Shane Quigley
+# 
+# This software is MIT licensed see link for details
+# http://www.opensource.org/licenses/MIT
+
 require 'rexml/document'
 require 'base64'
 
@@ -94,8 +101,8 @@ class ManifestParser
 	end
 end
 
-# if __FILE__ == $0
-# 	parser = ManifestParser.new ARGV[0]
-# 	parser.parse
-# 	puts parser.decrypter_hash.inspect
-# end
+if __FILE__ == $0
+	parser = ManifestParser.new ARGV[0]
+	parser.parse
+	puts parser.decrypter_hash.inspect
+end
